@@ -1,0 +1,13 @@
+# 采集产物一律不入库（体积大且含个人信息）
+*.lime
+*.img
+*.bin
+*.sha256
+segs.json
+triage.csv
+peek/
+tri/
+
+__pycache__/
+*.pyc
+.venv/
