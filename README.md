@@ -15,13 +15,13 @@
 - 结果 **NO_MATCH**。扫描前先跑自检：合成主密钥埋进随机数据，要求精确命中 1 处、空白对照 0 命中——通过。所以这个「没有」是可信的。
 - 该看的不是「有没有重启」，而是「**加密进程还在不在**」。样本在退出路径会主动清零那 48 字节密钥缓冲，进程一走密钥就没了。
 
-## 和已有四个仓库的分工
+## 和已有四个仓库的不同
 
 这一波已经有几个质量很高的公开项目，本仓库不重复它们的工作：
 
 | 仓库 | 内容 | 与本案的关系 |
 |---|---|---|
-| [soimy/c3rb3r-rescue](https://github.com/soimy/c3rb3r-rescue) | 首个成功案例（PVE 虚拟机）+ 格式分析与解密工具 | 密钥来源是本仓库没有的那条路；解密请用它 |
+| [soimy/c3rb3r-rescue](https://github.com/soimy/c3rb3r-rescue) | 首个成功案例（PVE 虚拟机）+ 格式分析与解密工具 | 解密请用它 |
 | [Benjamin-zlt/c3rb3r-baremetal-rescue](https://github.com/Benjamin-zlt/c3rb3r-baremetal-rescue) | 第二个成功案例（物理机 / 黑群晖），冻结进程读 `/proc/PID/mem` | 本案是它的反面：没赶上窗口 |
 | [Ericality/c3rb3r-dsm-case-20261028](https://github.com/Ericality/c3rb3r-dsm-case-20261028) | 案例记录，加密器因 OOM 自行退出 | 同属「进程没了」的结局 |
 | [Creeper-OF/synology-c3rb3r-nas-case-study](https://github.com/Creeper-OF/synology-c3rb3r-nas-case-study) | 案例研究，`/proc/kcore` 采集、密钥未命中、残存数据恢复 | 结论方向一致；本仓库补采集中间环节 |
